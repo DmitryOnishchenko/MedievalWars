@@ -1,0 +1,35 @@
+{
+  "name": "Orc Soldier",
+  "type": "Unit",
+  "side": "RightArmy",
+  "race": "Orc",
+  "zLevel": 1,
+  "maxHp": 170,
+  "armor": 0,
+  "damage": 25,
+  "defaultSpeed": 100,
+  "attackSpeedMs": 700,
+  "attackRange": 22,
+  "searchRange": 150,
+
+  "spawnPrice": 30,
+  "pricePerHead": 20,
+
+  "hitBoxWidth": 15,
+  "hitBoxHeight": 15,
+  "moveDir": {
+    "velocityX": -1,
+    "velocityY": 0
+  },
+
+  "animationSpeed": 80,
+  "widthSprite": 109,
+  "heightSprite": 109,
+  "baseLine": 30,
+  "moveSpritesFile": "/units/orcs/soldier/orc_regular_move.png",
+  "moveSpritesIndex": [0, 8],
+  "fightSpritesFile": "/units/orcs/soldier/orc_regular_fight.png",
+  "fightSpritesIndex": [0, 6],
+  "dieSpritesFile": "/units/orcs/soldier/orc_regular_die.png",
+  "dieSpritesIndex": [0, 8]
+}

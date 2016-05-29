@@ -1,0 +1,35 @@
+{
+  "name": "Orc Archer",
+  "type": "Unit",
+  "side": "RightArmy",
+  "race": "Orc",
+  "zLevel": 1,
+  "maxHp": 100,
+  "armor": 5,
+  "damage": 100,
+  "defaultSpeed": 40,
+  "attackSpeed": 5500,
+  "attackRange": 920,
+  "searchRange": 1040,
+
+  "spawnPrice": 80,
+  "pricePerHead": 30,
+
+  "hitBoxWidth": 15,
+  "hitBoxHeight": 15,
+  "moveDir": {
+    "velocityX": -1,
+    "velocityY": 0
+  },
+
+  "animationSpeed": 90,
+  "widthSprite": 100,
+  "heightSprite": 100,
+  "baseLine": 27,
+  "moveSpritesFile": "/units/orcs/archer/archer_move.png",
+  "moveSpritesIndex": [0, 8],
+  "fightSpritesFile": "/units/orcs/archer/archer_fight.png",
+  "fightSpritesIndex": [0, 17],
+  "dieSpritesFile": "/units/orcs/archer/archer_die.png",
+  "dieSpritesIndex": [0, 20]
+}

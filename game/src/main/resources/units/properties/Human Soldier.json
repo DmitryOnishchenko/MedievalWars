@@ -1,0 +1,35 @@
+{
+  "name": "Human Soldier",
+  "type": "Unit",
+  "side": "LeftArmy",
+  "race": "Human",
+  "zLevel": 1,
+  "maxHp": 140,
+  "armor": 10,
+  "damage": 30,
+  "defaultSpeed": 48,
+  "attackSpeed": 800,
+  "attackRange": 40,
+  "searchRange": 150,
+
+  "spawnPrice": 40,
+  "pricePerHead": 10,
+
+  "hitBoxWidth": 15,
+  "hitBoxHeight": 15,
+  "moveDir": {
+    "velocityX": 1,
+    "velocityY": 0
+  },
+
+  "animationSpeed": 90,
+  "widthSprite": 102,
+  "heightSprite": 102,
+  "baseLine": 30,
+  "moveSpritesFile": "/units/humans/soldier/knight_move.png",
+  "moveSpritesIndex": [0, 8],
+  "fightSpritesFile": "/units/humans/soldier/knight_fight.png",
+  "fightSpritesIndex": [0, 8],
+  "dieSpritesFile": "/units/humans/soldier/knight_die.png",
+  "dieSpritesIndex": [0, 8]
+}
