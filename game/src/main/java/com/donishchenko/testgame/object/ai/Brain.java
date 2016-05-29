@@ -18,16 +18,15 @@ public class Brain {
 
         /* Move */
         ideas[0] = new SimpleMoveIdea(gameObject, 1);
-        ideas[0].init();
 
         /* Search enemy */
         ideas[1] = new SearchEnemyIdea(gameObject, 10);
 
         /* Attack */
         ideas[2] = new SimpleAttackIdea(gameObject, 5);
-        ideas[2].init();
 
-        free();
+        // unlock brain
+        unlock();
     }
 
     public void update() {
@@ -37,12 +36,21 @@ public class Brain {
                     mainIdea = idea;
                 }
             }
+            // set lock
+            locked = mainIdea.needLock;
+            // set action
             gameObject.action = mainIdea.action;
         }
     }
 
-    public void free() {
-        /* Set default main idea */
+    public void lock() {
+        locked = true;
+    }
+
+    public void unlock() {
+        // unlock
+        locked = false;
+        // Set default main idea
         mainIdea = ideas[0];
         gameObject.action = mainIdea.action;
     }

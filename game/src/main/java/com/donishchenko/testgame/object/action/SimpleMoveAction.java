@@ -9,6 +9,7 @@ public class SimpleMoveAction extends Action {
 
     public SimpleMoveAction(GameObject gameObject) {
         this.gameObject = gameObject;
+        init();
     }
 
     @Override

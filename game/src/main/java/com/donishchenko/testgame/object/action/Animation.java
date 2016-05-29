@@ -19,7 +19,7 @@ public class Animation {
     }
 
     public void next() {
-        if (++timer == rate) {
+        if (timer++ == rate) {
             currentFrame = currentAnimation[index++];
             if (index == currentAnimation.length) {
                 index = 0;
@@ -47,6 +47,7 @@ public class Animation {
 
     public void setAnimation(int rate, BufferedImage[] leftAnimation, BufferedImage[] rightAnimation) {
         this.rate = rate;
+        this.timer = rate;
         this.leftAnimation = leftAnimation;
         this.rightAnimation = rightAnimation;
 
@@ -60,66 +61,4 @@ public class Animation {
             currentAnimation = leftAnimation;
         }
     }
-
-
-//    public Action action;
-//    public int currentSprite = 0;
-//    private int animationTimer;
-//    public BufferedImage[] sprites;
-//    private BufferedImage[] spritesRight;
-//    private BufferedImage[] spritesLeft;
-//    public int previousDirX;
-
-//    public Animation(Action action, BufferedImage[] sprites,
-//                     BufferedImage[] spritesRight, BufferedImage[] spritesLeft) {
-//        this.action = action;
-//        this.sprites = sprites;
-//        this.spritesRight = spritesRight;
-//        this.spritesLeft = spritesLeft;
-//        this.previousDirX = 1;
-//        this.currentSprite = 0;
-//    }
-
-//    public void next() {
-//        if (++animationTimer >= action.object.gModel.getAnimationSpeed()) {
-//            currentSprite++;
-//            if (currentSprite == sprites.length) {
-//                currentSprite = 0;
-//                if (action.needFullAnimation) {
-//                    action.animationFinished();
-//                }
-//            }
-//            animationTimer = 0;
-//        }
-//    }
-
-//    public BufferedImage get() {
-//        try {
-//            if (currentSprite == sprites.length) {
-//                currentSprite = sprites.length - 1;
-//            }
-//            return sprites[currentSprite];
-//        } catch (ArrayIndexOutOfBoundsException e) {
-//            // TODO Animation: fix ArrayIndexOutOfBoundsException
-//            System.out.println("Return 0 index");
-//            return sprites[0];
-//        }
-//    }
-//
-//    public void swapDir(float unitDirX) {
-//        previousDirX = unitDirX > 0 ? 1 : -1;
-//        if (sprites == spritesRight) {
-//            sprites = spritesLeft;
-//        } else {
-//            sprites = spritesRight;
-//        }
-//    }
-//
-//    public boolean watchWest() {
-//        return previousDirX < 0;
-//    }
-//
-//    public boolean watchEast() {
-//        return previousDirX > 0;
-//    }
 }

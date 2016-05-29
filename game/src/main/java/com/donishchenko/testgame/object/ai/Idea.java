@@ -7,11 +7,13 @@ public abstract class Idea {
 
     public GameObject gameObject;
     public int priority;
+    public boolean needLock;
     public Action action;
 
-    public Idea(GameObject gameObject, int priority) {
+    public Idea(GameObject gameObject, int priority, boolean needLock) {
         this.gameObject = gameObject;
         this.priority = priority;
+        this.needLock = needLock;
     }
 
     public abstract void init();

@@ -20,6 +20,12 @@ public class DieAction extends Action {
 
         animation = new Animation(this);
         animation.setAnimation(rate, leftAnimation, rightAnimation);
+
+        float dirX = gameObject.dir.x;
+        if (dirX == 0) {
+            dirX = gameObject.physicsModel.getMoveDir().x;
+        }
+        animation.checkDirection(dirX);
     }
 
     @Override

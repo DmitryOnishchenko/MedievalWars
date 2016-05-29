@@ -46,11 +46,12 @@ public class BattleState extends GameState {
         bloodList = effects.get("bloodList");
 
         addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 150, 500));
-        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 300, 500));
+        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 400, 500));
+        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 1100, 500));
 
         for (int i = 0; i < 100; i++) {
-            addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, BattleStateSettings.leftSpawnPoint, getRandomPointY()));
-            addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, BattleStateSettings.rightSpawnPoint, getRandomPointY()));
+//            addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, BattleStateSettings.leftSpawnPoint, getRandomPointY()));
+//            addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, BattleStateSettings.rightSpawnPoint, getRandomPointY()));
         }
     }
 

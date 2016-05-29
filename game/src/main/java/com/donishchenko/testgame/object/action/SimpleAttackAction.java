@@ -14,6 +14,8 @@ public class SimpleAttackAction extends Action {
         this.gameObject = gameObject;
         this.attackTrigger = (gameObject.physicsModel.getAttackSpeed() * 1_000_000) / EngineConstants.NANO_PER_TICK;
         this.counter = attackTrigger;
+
+        init();
     }
 
     @Override
@@ -46,8 +48,8 @@ public class SimpleAttackAction extends Action {
         GameObject target = gameObject.target;
         if (target == null || !target.isAlive()) {
             gameObject.target = null;
-            // free action for brain
-            gameObject.brain.free();
+            // unlock action for brain
+            gameObject.brain.unlock();
         }
     }
 }

@@ -11,13 +11,13 @@ public class SimpleMoveIdea extends Idea {
     private int rethinkTrigger = 250 * 1_000_000 / EngineConstants.NANO_PER_TICK;
 
     public SimpleMoveIdea(GameObject gameObject, int priority) {
-        super(gameObject, priority);
+        super(gameObject, priority, false);
+        init();
     }
 
     @Override
     public void init() {
         action = new SimpleMoveAction(gameObject);
-        action.init();
     }
 
     @Override
@@ -27,7 +27,7 @@ public class SimpleMoveIdea extends Idea {
             gameObject.dir = gameObject.physicsModel.getMoveDir();
         }
         // correct the direction by trigger
-        else if (rethinkTimer == rethinkTrigger) {
+        else if (rethinkTimer++ == rethinkTrigger) {
             rethinkTimer = 0;
             Vector2F newDir = gameObject.target.pos.copy();
             newDir.sub(gameObject.pos);
@@ -35,11 +35,8 @@ public class SimpleMoveIdea extends Idea {
             gameObject.dir = newDir;
         }
 
-        if (rethinkTimer++ == rethinkTrigger) {
-            rethinkTimer = 0;
-            // check animation direction
-            action.animation.checkDirection(gameObject.dir.x);
-        }
+        // check animation direction
+        action.animation.checkDirection(gameObject.dir.x);
 
         return true;
     }
