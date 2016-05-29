@@ -7,8 +7,13 @@ import java.awt.image.BufferedImage;
 
 public class SimpleAttackAction extends Action {
 
+    private int attackTrigger;
+    private int counter;
+
     public SimpleAttackAction(GameObject gameObject) {
         this.gameObject = gameObject;
+        this.attackTrigger = (gameObject.physicsModel.getAttackSpeed() * 1_000_000) / EngineConstants.NANO_PER_TICK;
+        this.counter = attackTrigger;
     }
 
     @Override
@@ -23,13 +28,26 @@ public class SimpleAttackAction extends Action {
 
     @Override
     public void execute() {
+        if (counter++ != attackTrigger) {
+            return;
+        }
+        counter = 0;
+
         GameObject target = gameObject.target;
         if (target != null) {
-            if (!target.isAlive()) {
-                gameObject.target = null;
-            } else {
-                gameObject.target.takeDamage(gameObject.damage);
-            }
+            gameObject.target.takeDamage(gameObject.damage);
+        }
+    }
+
+    @Override
+    public void animationFinished() {
+        System.out.println(gameObject.name + " anim finished");
+
+        GameObject target = gameObject.target;
+        if (target == null || !target.isAlive()) {
+            gameObject.target = null;
+            // free action for brain
+            gameObject.brain.free();
         }
     }
 }

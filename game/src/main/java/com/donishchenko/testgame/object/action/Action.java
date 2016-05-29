@@ -21,6 +21,6 @@ public abstract class Action {
         return animation.getCurrentFrame();
     }
 
-    public void animationFinished() {}
+    public abstract void animationFinished();
 
 }

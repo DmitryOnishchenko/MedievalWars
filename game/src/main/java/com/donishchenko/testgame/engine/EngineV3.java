@@ -74,7 +74,7 @@ public class EngineV3 implements GameEngine {
     @Override
     public void render() {
         if (!window.isFocused()) {
-            return;
+//            return;
         }
         // Render single frame
         do {

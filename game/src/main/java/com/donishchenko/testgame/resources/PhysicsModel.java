@@ -19,7 +19,7 @@ public class PhysicsModel {
     @JsonProperty private int armor;
     @JsonProperty private int damage;
     @JsonProperty private float defaultSpeed;
-    @JsonProperty private float attackSpeed;
+    @JsonProperty private int attackSpeed;
     @JsonProperty private float attackRange;
     @JsonProperty private float searchRange;
 
@@ -95,11 +95,11 @@ public class PhysicsModel {
         this.defaultSpeed = defaultSpeed * ResourceLoader.SCALE;
     }
 
-    public float getAttackSpeed() {
+    public int getAttackSpeed() {
         return attackSpeed;
     }
 
-    public void setAttackSpeed(float attackSpeed) {
+    public void setAttackSpeed(int attackSpeed) {
         this.attackSpeed = attackSpeed;
     }
 

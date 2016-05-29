@@ -27,13 +27,11 @@ public class Brain {
         ideas[2] = new SimpleAttackIdea(gameObject, 5);
         ideas[2].init();
 
-        /* Set default main idea */
-        mainIdea = ideas[0];
-        gameObject.action = mainIdea.action;
+        free();
     }
 
     public void update() {
-        if (!locked) {
+        if (!locked && gameObject.isAlive()) {
             for (Idea idea : ideas) {
                 if (idea.priority >= mainIdea.priority && idea.think()) {
                     mainIdea = idea;
@@ -43,4 +41,9 @@ public class Brain {
         }
     }
 
+    public void free() {
+        /* Set default main idea */
+        mainIdea = ideas[0];
+        gameObject.action = mainIdea.action;
+    }
 }

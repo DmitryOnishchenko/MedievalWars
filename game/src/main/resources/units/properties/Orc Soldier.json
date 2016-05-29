@@ -8,7 +8,7 @@
   "armor": 0,
   "damage": 25,
   "defaultSpeed": 100,
-  "attackSpeedMs": 700,
+  "attackSpeed": 700,
   "attackRange": 22,
   "searchRange": 150,
 

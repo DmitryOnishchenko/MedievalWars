@@ -26,7 +26,6 @@ public class RenderStats {
             buildReport();
             fpsActual = 0;
             startTime += 1_000_000_000;
-            System.out.println(report);
         }
     }
 

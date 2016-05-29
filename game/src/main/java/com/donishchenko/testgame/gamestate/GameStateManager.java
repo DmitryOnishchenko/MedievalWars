@@ -15,8 +15,8 @@ public class GameStateManager {
 
     public GameStateManager() {
         states = new Stack<>();
-        states.push(new TestGameState(this));
-//        states.push(new BattleState(this));
+//        states.push(new TestGameState(this));
+        states.push(new BattleState(this));
     }
 
     public void init() {

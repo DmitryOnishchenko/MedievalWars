@@ -38,4 +38,8 @@ public class SimpleMoveAction extends Action {
         gameObject.cell.move(gameObject);
     }
 
+    @Override
+    public void animationFinished() {
+        // nothing to do
+    }
 }

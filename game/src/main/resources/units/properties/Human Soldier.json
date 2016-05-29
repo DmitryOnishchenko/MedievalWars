@@ -9,7 +9,8 @@
   "damage": 30,
   "defaultSpeed": 48,
   "attackSpeed": 800,
-  "attackRange": 40,
+  "_attackRange": 40,
+  "attackRange": 150,
   "searchRange": 150,
 
   "spawnPrice": 40,

@@ -3,6 +3,7 @@ package com.donishchenko.testgame.object;
 import com.donishchenko.testgame.config.EngineConstants;
 import com.donishchenko.testgame.gamestate.battle.Cell;
 import com.donishchenko.testgame.object.action.Action;
+import com.donishchenko.testgame.object.action.DieAction;
 import com.donishchenko.testgame.object.ai.Brain;
 import com.donishchenko.testgame.object.component.GraphicsComponent;
 import com.donishchenko.testgame.object.component.GraphicsComponentImpl;
@@ -14,6 +15,7 @@ import com.donishchenko.testgame.resources.Resources;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Ellipse2D;
+import java.util.Date;
 
 public class GameObject implements Comparable<GameObject> {
 
@@ -146,11 +148,14 @@ public class GameObject implements Comparable<GameObject> {
             totalDamage = 1;
         }
 
+        System.out.println(new Date() + " | " + name + " took " + totalDamage + " dmg");
+
         hp -= totalDamage;
         if (hp <= 0) {
             target = null;
             zLevel = 0;
             // TODO die action + draw blood effect
+            action = new DieAction(this);
         }
     }
 
