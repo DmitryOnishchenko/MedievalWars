@@ -43,8 +43,6 @@ public class SimpleAttackAction extends Action {
 
     @Override
     public void animationFinished() {
-        System.out.println(gameObject.name + " anim finished");
-
         GameObject target = gameObject.target;
         if (target == null || !target.isAlive()) {
             gameObject.target = null;

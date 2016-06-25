@@ -23,13 +23,15 @@ public class SimpleMoveIdea extends Idea {
     @Override
     public boolean think() {
         // if target == null then move simple forward
-        if (gameObject.target == null) {
+        GameObject target = gameObject.target;
+        if (target == null || !target.isAlive()) {
+            gameObject.target = null;
             gameObject.dir = gameObject.physicsModel.getMoveDir();
         }
         // correct the direction by trigger
         else if (rethinkTimer++ == rethinkTrigger) {
             rethinkTimer = 0;
-            Vector2F newDir = gameObject.target.pos.copy();
+            Vector2F newDir = target.pos.copy();
             newDir.sub(gameObject.pos);
             newDir.normalize();
             gameObject.dir = newDir;

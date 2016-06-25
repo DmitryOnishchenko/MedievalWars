@@ -148,8 +148,6 @@ public class GameObject implements Comparable<GameObject> {
             totalDamage = 1;
         }
 
-        System.out.println(new Date() + " | " + name + " took " + totalDamage + " dmg");
-
         hp -= totalDamage;
         if (hp <= 0) {
             target = null;

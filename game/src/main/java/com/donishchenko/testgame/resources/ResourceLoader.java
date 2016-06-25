@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class ResourceLoader {
 
-    public static float SCALE = 1f;
+    public static float SCALE = 0.5f;
     private static final HashMap<String, HashMap<String, Object>> assets = new HashMap<>();
 
     static {
