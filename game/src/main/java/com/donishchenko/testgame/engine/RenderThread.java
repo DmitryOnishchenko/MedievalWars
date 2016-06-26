@@ -24,6 +24,8 @@ public class RenderThread extends Thread {
 
     @Override
     public void run() {
+        setName("Render-Thread");
+
         long timer = getNanoTime();
         long previous = getNanoTime();
         long lag = 0;

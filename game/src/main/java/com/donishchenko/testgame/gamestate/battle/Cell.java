@@ -18,7 +18,7 @@ public class Cell {
     private final int row;
     private final int col;
     private Grid grid;
-    private Rectangle2D.Float bounds = new Rectangle2D.Float();
+    public Rectangle2D.Float bounds = new Rectangle2D.Float();
 
     private List<GameObject> leftArmy       = new FastRemoveArrayList<>(5_00);
     private List<GameObject> rightArmy      = new FastRemoveArrayList<>(5_00);
@@ -65,6 +65,9 @@ public class Cell {
         Iterator<GameObject> iterator = collection.iterator();
         while (iterator.hasNext()) {
             GameObject gameObject = iterator.next();
+            // double check
+            checkPosition(gameObject);
+
             if (gameObject.delete) {
                 iterator.remove();
             } else if (gameObject.relocate) {
@@ -112,12 +115,11 @@ public class Cell {
         return neutrals;
     }
 
-    public void move(GameObject gameObject) {
-        int newCol = (gameObject.x() - INDENT_LEFT) / CELL_SIZE;
-        int newRow = (gameObject.y() - INDENT_TOP) / CELL_SIZE;
-
-        if (row != newRow || col != newCol) {
+    public void checkPosition(GameObject gameObject) {
+        if (!bounds.contains(gameObject.x(), gameObject.y())) {
             gameObject.relocate = true;
+        } else {
+            gameObject.relocate = false;
         }
     }
 

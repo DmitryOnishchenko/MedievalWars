@@ -15,9 +15,10 @@ public class InputThread extends Thread {
     @Autowired
     private GameEngine engine;
 
-
     @Override
     public void run() {
+        setName("Input-Thread");
+
         while (true) {
             long current = getNanoTime();
 

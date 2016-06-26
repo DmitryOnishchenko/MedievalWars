@@ -15,6 +15,7 @@ import com.donishchenko.testgame.resources.Resources;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.util.Date;
 
 public class GameObject implements Comparable<GameObject> {
@@ -41,6 +42,7 @@ public class GameObject implements Comparable<GameObject> {
     public Ellipse2D.Float hitBox = new Ellipse2D.Float();
     public Ellipse2D.Float attackBox = new Ellipse2D.Float();
     public Ellipse2D.Float searchCircle = new Ellipse2D.Float();
+    public Rectangle2D.Float bounds;
 
     /* Models */
     public PhysicsModel physicsModel;
@@ -95,6 +97,15 @@ public class GameObject implements Comparable<GameObject> {
 
         float attackRange = physicsModel.getAttackRange();
         attackBox.setFrameFromCenter(pos.x, pos.y, pos.x + attackRange, pos.y + attackRange);
+
+        // bounds
+        int widthSprite = (int) (graphicsModel.getWidthSprite() * ResourceLoader.SCALE);
+        int heightSprite = (int) (graphicsModel.getHeightSprite() * ResourceLoader.SCALE);
+        int baseLine = (int) (graphicsModel.getBaseLine() * ResourceLoader.SCALE);
+
+        cornerX = pos.x - widthSprite / 2;
+        cornerY = pos.y + baseLine - heightSprite;
+        bounds = new Rectangle2D.Float(cornerX, cornerY, widthSprite, heightSprite);
 
         /* Init components */
         brain = new Brain(this);

@@ -1,7 +1,5 @@
 package com.donishchenko.testgame.gamestate.battle;
 
-import com.donishchenko.testgame.config.GameConstants;
-
 public class BattleStateSettings {
 
     public static volatile boolean DEMO_MODE = false;
@@ -13,8 +11,8 @@ public class BattleStateSettings {
     public static volatile boolean DEBUG_TARGET = true;
     public static volatile boolean DEBUG_GRID = true;
 
-    public static int leftSpawnPoint = Grid.INDENT_LEFT;
-    public static int rightSpawnPoint = GameConstants.DEFAULT_WIDTH + 50;
+    public static int leftSpawnPoint = 0;
+    public static int rightSpawnPoint = 600;
 
     /* Test */
     public static int testSpawnTimer;

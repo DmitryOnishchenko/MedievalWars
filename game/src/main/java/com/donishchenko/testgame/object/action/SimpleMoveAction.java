@@ -29,14 +29,16 @@ public class SimpleMoveAction extends Action {
         gameObject.hitBox.x         += shiftX;
         gameObject.attackBox.x      += shiftX;
         gameObject.searchCircle.x   += shiftX;
+        gameObject.bounds.x         += shiftX;
 
         float shiftY                = gameObject.speed * gameObject.dir.y;
         gameObject.pos.y            += shiftY;
         gameObject.hitBox.y         += shiftY;
         gameObject.attackBox.y      += shiftY;
         gameObject.searchCircle.y   += shiftY;
+        gameObject.bounds.y         += shiftY;
 
-        gameObject.cell.move(gameObject);
+        gameObject.cell.checkPosition(gameObject);
     }
 
     @Override

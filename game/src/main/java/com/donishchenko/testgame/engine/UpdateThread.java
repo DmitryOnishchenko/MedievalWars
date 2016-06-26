@@ -4,6 +4,10 @@ import com.donishchenko.testgame.engine.stats.UpdateStats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.awt.event.KeyEvent;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 import static com.donishchenko.testgame.utils.CommonUtils.*;
@@ -18,12 +22,16 @@ public class UpdateThread extends Thread {
     /* Update info */
     @Autowired private UpdateStats updateStats;
 
+    public Queue<KeyEvent> keyEventQueue = new ConcurrentLinkedQueue<>();
+
     public String report() {
         return updateStats.report();
     }
 
     @Override
     public void run() {
+        setName("Update-Thread");
+
         long timer = getNanoTime();
         long previous = getNanoTime();
         long lag = 0;
@@ -36,7 +44,8 @@ public class UpdateThread extends Thread {
             previous = current;
             lag += elapsed;
 
-            engine.processInput();
+            KeyEvent keyEvent = keyEventQueue.poll();
+            engine.processInput(keyEvent);
 
             while (lag >= NANO_PER_TICK) {
                 updateStats.start();

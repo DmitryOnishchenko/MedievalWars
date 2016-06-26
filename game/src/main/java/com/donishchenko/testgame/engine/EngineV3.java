@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 
 import static com.donishchenko.testgame.config.EngineConstants.SHOW_INFO;
@@ -37,7 +39,17 @@ public class EngineV3 implements GameEngine {
         strategy = window.getBufferStrategy();
 
         // TODO key listener
-//        window.addKeyListener();
+        window.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent event) {
+                updateThread.keyEventQueue.offer(event);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent event) {
+                updateThread.keyEventQueue.offer(event);
+            }
+        });
 
         gsm.init();
     }
@@ -58,12 +70,12 @@ public class EngineV3 implements GameEngine {
 
         renderThread.start();
         updateThread.start();
-        inputThread.start();
+//        inputThread.start();
     }
 
     @Override
-    public void processInput() {
-        gsm.processInput(null);
+    public void processInput(KeyEvent keyEvent) {
+        gsm.processInput(keyEvent);
     }
 
     @Override

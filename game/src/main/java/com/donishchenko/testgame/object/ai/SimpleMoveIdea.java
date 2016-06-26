@@ -22,7 +22,7 @@ public class SimpleMoveIdea extends Idea {
 
     @Override
     public boolean think() {
-        // if target == null then move simple forward
+        // if target == null then checkPosition simple forward
         GameObject target = gameObject.target;
         if (target == null || !target.isAlive()) {
             gameObject.target = null;
