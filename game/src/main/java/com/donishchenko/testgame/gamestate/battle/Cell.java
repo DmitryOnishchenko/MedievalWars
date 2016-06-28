@@ -55,6 +55,19 @@ public class Cell {
     }
 
     public void update() {
+        if (!leftArmy.isEmpty() || !rightArmy.isEmpty() || !projectiles.isEmpty() || !neutrals.isEmpty()) {
+            // clear map
+            int startRow = (int) ((bounds.y - INDENT_TOP) / PLACE_SIZE);
+            int startCol = (int) (bounds.x / PLACE_SIZE);
+            int limit = CELL_SIZE / PLACE_SIZE;
+
+            for (int row = startRow; row < startRow + limit; row++) {
+                for (int col = startCol; col < startCol + limit; col++) {
+                    grid.map[row][col] = 0;
+                }
+            }
+        }
+
         updateObjects(leftArmy);
         updateObjects(rightArmy);
         updateObjects(projectiles);
@@ -116,11 +129,20 @@ public class Cell {
     }
 
     public void checkPosition(GameObject gameObject) {
-        if (!bounds.contains(gameObject.x(), gameObject.y())) {
+        int x = gameObject.x();
+        int y = gameObject.y();
+
+        if (!bounds.contains(x, y)) {
             gameObject.relocate = true;
         } else {
             gameObject.relocate = false;
         }
+
+        // test pathfinding
+        int col = (int) ((x - grid.bounds.x) / Grid.PLACE_SIZE);
+        int row = (y - INDENT_TOP) / Grid.PLACE_SIZE;
+
+        grid.map[row][col] = 1;
     }
 
     @Override

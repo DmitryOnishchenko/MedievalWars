@@ -86,10 +86,18 @@ public class BattleState extends GameState {
 //
 //        addGameObject(player);
 
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 100, 500));
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 150, 450));
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 175, 400));
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 200, 350));
+//
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 100, 325));
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 150, 300));
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 175, 275));
+//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 200, 250));
 
-        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 500, 500));
-        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 500, 550));
-        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 500, 450));
+//        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 500, 550));
+//        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 500, 450));
 
         for (int i = 0; i < 100; i++) {
 //            addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, BattleStateSettings.leftSpawnPoint, getRandomPointY()));
@@ -148,21 +156,23 @@ public class BattleState extends GameState {
             }
         }
 
-//        Vector2F dir = player.dir;
-//        if (key == 'd') {
-//            // checkPosition right
-//            if (id == KEY_PRESSED) dir.x = 1;
-//            else dir.x = 0;
-//        } else if (key == 'a') {
-//            if (id == KEY_PRESSED) dir.x = -1;
-//            else dir.x = 0;
-//        } else if (key == 'w') {
-//            if (id == KEY_PRESSED) dir.y = -1;
-//            else dir.y = 0;
-//        } else if (key == 's') {
-//            if (id == KEY_PRESSED) dir.y = 1;
-//            else dir.y = 0;
-//        }
+        if (player != null) {
+            Vector2F dir = player.dir;
+            if (key == 'd') {
+                // checkPosition right
+                if (id == KEY_PRESSED) dir.x = 1;
+                else dir.x = 0;
+            } else if (key == 'a') {
+                if (id == KEY_PRESSED) dir.x = -1;
+                else dir.x = 0;
+            } else if (key == 'w') {
+                if (id == KEY_PRESSED) dir.y = -1;
+                else dir.y = 0;
+            } else if (key == 's') {
+                if (id == KEY_PRESSED) dir.y = 1;
+                else dir.y = 0;
+            }
+        }
     }
 
     @Override
