@@ -105,8 +105,8 @@ public class EngineV3 implements GameEngine {
 
                 if (SHOW_INFO) {
                     g2.setPaint(Color.WHITE);
-                    g2.drawString(renderThread.report(), 900, 18);
-                    g2.drawString(updateThread.report(), 1100, 18);
+                    g2.drawString(renderThread.report(), 800, 18);
+                    g2.drawString(updateThread.report(), 1000, 18);
                 }
 
                 // Dispose the graphics

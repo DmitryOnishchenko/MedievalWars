@@ -16,7 +16,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Date;
 
 public class GameObject implements Comparable<GameObject> {
 

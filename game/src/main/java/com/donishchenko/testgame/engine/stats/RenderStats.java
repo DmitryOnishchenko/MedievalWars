@@ -10,7 +10,7 @@ public class RenderStats {
     /* Info */
     private String fpsExpected = Integer.toString(MAX_FPS);
     private int fpsActual;
-    private String report = "FPS: 0/0 | 0 ms";
+    private String report = "FPS: 0/0 (0 ms)";
 
     private long startTime;
     private long start;
@@ -42,6 +42,6 @@ public class RenderStats {
     }
 
     private void buildReport() {
-        report = "FPS: " + fpsActual + '/' + fpsExpected + " | " + (end - start) / 1_000_000d + " ms";
+        report = "FPS: " + fpsActual + '/' + fpsExpected + " (" + (end - start) / 1_000_000d + " ms)";
     }
 }

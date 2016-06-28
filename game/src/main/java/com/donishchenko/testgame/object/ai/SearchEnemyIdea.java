@@ -27,7 +27,7 @@ public class SearchEnemyIdea extends Idea {
     @Override
     public boolean think() {
         // if target is null - search target
-        if (rethinkTimer % 10 == 0 && gameObject.target == null) {
+        if (rethinkTimer % 5 == 0 && gameObject.target == null) {
             Executor.submitTask(new SearchEnemyTask(gameObject));
         }
         // search another target by trigger

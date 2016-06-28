@@ -4,14 +4,13 @@ import com.donishchenko.testgame.engine.stats.UpdateStats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.awt.event.KeyEvent;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
-import static com.donishchenko.testgame.utils.CommonUtils.*;
-import static com.donishchenko.testgame.config.EngineConstants.*;
+import static com.donishchenko.testgame.config.EngineConstants.NANO_PER_TICK;
+import static com.donishchenko.testgame.utils.CommonUtils.getNanoTime;
 
 @Component
 public class UpdateThread extends Thread {

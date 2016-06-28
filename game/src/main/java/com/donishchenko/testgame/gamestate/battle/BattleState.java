@@ -1,5 +1,6 @@
 package com.donishchenko.testgame.gamestate.battle;
 
+import com.donishchenko.testgame.config.GameConstants;
 import com.donishchenko.testgame.gamestate.GameState;
 import com.donishchenko.testgame.gamestate.GameStateManager;
 import com.donishchenko.testgame.object.GameObject;
@@ -36,7 +37,7 @@ public class BattleState extends GameState {
     private List<BufferedImage> bloodList;
 
     GameObject player;
-    private Rectangle2D.Float cameraBounds = new Rectangle2D.Float(300, 200, 600, 400);
+    private Rectangle2D.Float cameraBounds = new Rectangle2D.Float(0, 0, GameConstants.DEFAULT_WIDTH, GameConstants.DEFAULT_HEIGHT);
 
     public BattleState(GameStateManager gsm) {
         super(gsm);
@@ -80,16 +81,19 @@ public class BattleState extends GameState {
         renderObjects.add(backgroundObject4);
 
         // test player
-        player = createDemoUnit("Human Soldier", Side.LeftArmy, 0, 500);
-        player.brain = null;
+//        player = createDemoUnit("Human Soldier", Side.LeftArmy, 0, 500);
+//        player.brain = null;
+//
+//        addGameObject(player);
 
-        addGameObject(player);
-//        addGameObject(createDemoUnit("Human Soldier", Side.RightArmy, 800, 500));
-//        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 1100, 500));
+
+        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 500, 500));
+        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 500, 550));
+        addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, 500, 450));
 
         for (int i = 0; i < 100; i++) {
-            addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, BattleStateSettings.leftSpawnPoint, getRandomPointY()));
-            addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, BattleStateSettings.rightSpawnPoint, getRandomPointY()));
+//            addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, BattleStateSettings.leftSpawnPoint, getRandomPointY()));
+//            addGameObject(createDemoUnit("Orc Soldier", Side.RightArmy, BattleStateSettings.rightSpawnPoint, getRandomPointY()));
         }
     }
 
@@ -144,21 +148,21 @@ public class BattleState extends GameState {
             }
         }
 
-        Vector2F dir = player.dir;
-        if (key == 'd') {
-            // checkPosition right
-            if (id == KEY_PRESSED) dir.x = 1;
-            else dir.x = 0;
-        } else if (key == 'a') {
-            if (id == KEY_PRESSED) dir.x = -1;
-            else dir.x = 0;
-        } else if (key == 'w') {
-            if (id == KEY_PRESSED) dir.y = -1;
-            else dir.y = 0;
-        } else if (key == 's') {
-            if (id == KEY_PRESSED) dir.y = 1;
-            else dir.y = 0;
-        }
+//        Vector2F dir = player.dir;
+//        if (key == 'd') {
+//            // checkPosition right
+//            if (id == KEY_PRESSED) dir.x = 1;
+//            else dir.x = 0;
+//        } else if (key == 'a') {
+//            if (id == KEY_PRESSED) dir.x = -1;
+//            else dir.x = 0;
+//        } else if (key == 'w') {
+//            if (id == KEY_PRESSED) dir.y = -1;
+//            else dir.y = 0;
+//        } else if (key == 's') {
+//            if (id == KEY_PRESSED) dir.y = 1;
+//            else dir.y = 0;
+//        }
     }
 
     @Override
@@ -177,6 +181,7 @@ public class BattleState extends GameState {
 
     // TODO sortTrigger: don't forget this
     private int sortTrigger = MAX_FPS / 2 - 1;
+    private int rendered;
 
     @Override
     public void render(Graphics2D g2) {
@@ -199,13 +204,16 @@ public class BattleState extends GameState {
 
                 Collections.sort(renderObjects);
             }
+            // rendered stats
+            rendered = renderObjects.size();
             for (GameObject obj : renderObjects) {
                 // check visibility
-//                if (cameraBounds.intersects(obj.bounds)) {
-//                    obj.visible = true;
-//                } else {
-//                    obj.visible = false;
-//                }
+                if (cameraBounds.intersects(obj.bounds)) {
+                    obj.visible = true;
+                } else {
+                    rendered -= 1;
+                    obj.visible = false;
+                }
 
                 obj.render(g2);
             }
@@ -218,13 +226,15 @@ public class BattleState extends GameState {
         }
 
         // draw camera
-//        g2.setPaint(Color.WHITE);
-//        g2.setStroke(new BasicStroke(10));
-//        g2.draw(cameraBounds);
+        g2.setPaint(Color.WHITE);
+        g2.setStroke(new BasicStroke(3));
+        g2.draw(cameraBounds);
 
         /* Info */
+        g2.setPaint(Color.BLACK);
+        g2.fillRect(780, 0, 500, 50);
         g2.setPaint(Color.WHITE);
-        g2.drawString("BattleState | GameObjects: " + renderObjects.size(), 900, 36);
+        g2.drawString("BattleState | GameObjects: " + renderObjects.size() + ", rendered: " + rendered, 800, 36);
     }
 
     // TODO test: createDemoUnit
