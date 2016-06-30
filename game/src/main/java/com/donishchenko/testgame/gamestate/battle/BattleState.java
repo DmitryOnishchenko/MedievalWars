@@ -86,7 +86,7 @@ public class BattleState extends GameState {
 //
 //        addGameObject(player);
 
-//        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 100, 500));
+        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 100, 500));
 //        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 150, 450));
 //        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 175, 400));
 //        addGameObject(createDemoUnit("Human Soldier", Side.LeftArmy, 200, 350));

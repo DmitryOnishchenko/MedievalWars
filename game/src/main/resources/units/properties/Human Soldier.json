@@ -26,10 +26,12 @@
   "widthSprite": 102,
   "heightSprite": 102,
   "baseLine": 30,
-  "moveSpritesFile": "/units/humans/soldier/knight_move.png",
+  "standSpritesIndex": [0, 4],
+  "standSpritesFile": "/units/humans/soldier/knight_main.png",
   "moveSpritesIndex": [0, 8],
-  "fightSpritesFile": "/units/humans/soldier/knight_fight.png",
+  "moveSpritesFile": "/units/humans/soldier/knight_move.png",
   "fightSpritesIndex": [0, 8],
-  "dieSpritesFile": "/units/humans/soldier/knight_die.png",
-  "dieSpritesIndex": [0, 8]
+  "fightSpritesFile": "/units/humans/soldier/knight_fight.png",
+  "dieSpritesIndex": [0, 8],
+  "dieSpritesFile": "/units/humans/soldier/knight_die.png"
 }

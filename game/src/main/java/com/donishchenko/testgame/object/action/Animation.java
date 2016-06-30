@@ -1,5 +1,7 @@
 package com.donishchenko.testgame.object.action;
 
+import com.donishchenko.testgame.object.Side;
+
 import java.awt.image.BufferedImage;
 
 public class Animation {
@@ -55,7 +57,7 @@ public class Animation {
     }
 
     public void checkDirection(float dirX) {
-        if (dirX > 0) {
+        if (dirX > 0 || (dirX == 0 && action.gameObject.side == Side.LeftArmy)) {
             currentAnimation = rightAnimation;
         } else {
             currentAnimation = leftAnimation;

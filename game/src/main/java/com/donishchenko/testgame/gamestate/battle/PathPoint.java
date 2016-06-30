@@ -1,12 +1,11 @@
 package com.donishchenko.testgame.gamestate.battle;
 
+import com.donishchenko.testgame.object.GameObject;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class PathPoint {
-
-    public byte[][] map;
-
     public int row;
     public int col;
     public boolean blocked;
@@ -18,8 +17,7 @@ public class PathPoint {
     public int g;
     public int h;
 
-    public PathPoint(byte[][] map, int col, int row, boolean blocked, int cost, PathPoint parent) {
-        this.map = map;
+    public PathPoint(int col, int row, boolean blocked, int cost, PathPoint parent) {
         this.col = col;
         this.row = row;
         this.blocked = blocked;
@@ -49,11 +47,11 @@ public class PathPoint {
     }
 
     private void addNotNullFreePlace(int row, int col, int cost, List<PathPoint> list) {
-        if (row < 0 || row >= map.length) return;
-        if (col < 0 || col >= map[0].length) return;
+        if (row < 0 || row >= Grid.map.length) return;
+        if (col < 0 || col >= Grid.map[0].length) return;
 
-        if (map[row][col] == 0) {
-            PathPoint point = new PathPoint(map, col, row, false, cost, this);
+        if (Grid.map[row][col] == 0) {
+            PathPoint point = new PathPoint(col, row, false, cost, this);
             list.add(point);
         }
     }
@@ -86,5 +84,11 @@ public class PathPoint {
                 ", g=" + g +
                 ", h=" + h +
                 '}';
+    }
+
+    public static PathPoint forUnit(GameObject gameObject) {
+        int col = gameObject.x() / Grid.PLACE_SIZE;
+        int row = (gameObject.y() - Grid.INDENT_TOP) / Grid.PLACE_SIZE;
+        return new PathPoint(col, row, true, 0, null);
     }
 }

@@ -21,7 +21,7 @@ public class Grid {
 
     // pathfinding
     public static final int PLACE_SIZE = 10;
-    public byte[][] map = new byte[BATTLE_HEIGHT / PLACE_SIZE][BATTLE_WIDTH / PLACE_SIZE];
+    public static byte[][] map = new byte[BATTLE_HEIGHT / PLACE_SIZE][BATTLE_WIDTH / PLACE_SIZE];
 
     public Grid() {
         init();
@@ -95,7 +95,7 @@ public class Grid {
 
                 Rectangle2D.Float rect = new Rectangle2D.Float(x, y, PLACE_SIZE, PLACE_SIZE);
                 if (map[row][col] == 0) {
-                    g2.setPaint(Color.YELLOW);
+                    g2.setPaint(Color.WHITE);
                     g2.draw(rect);
                 } else {
                     g2.setPaint(Color.RED);
@@ -139,7 +139,7 @@ public class Grid {
     }
 
     // a star test
-    public List<PathPoint> aStar(PathPoint start, PathPoint goal) {
+    public static List<PathPoint> findPath(PathPoint start, PathPoint goal) {
         Set<PathPoint> open = new HashSet<>();
         Set<PathPoint> closed = new HashSet<>();
 
@@ -206,7 +206,7 @@ public class Grid {
         return nodes;
     }
 
-    public int estimateDistance(PathPoint pathPoint1, PathPoint pathPoint2) {
+    public static int estimateDistance(PathPoint pathPoint1, PathPoint pathPoint2) {
         return 10 * Math.abs(pathPoint1.col - pathPoint2.col) + Math.abs(pathPoint1.row - pathPoint2.row);
     }
 }

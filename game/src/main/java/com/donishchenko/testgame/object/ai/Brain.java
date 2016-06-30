@@ -14,16 +14,19 @@ public class Brain {
     }
 
     public void init() {
-        ideas = new Idea[3];
+        ideas = new Idea[4];
+
+        /* Stand */
+        ideas[0] = new SimpleStandIdea(gameObject, 1);
 
         /* Move */
-        ideas[0] = new SimpleMoveIdea(gameObject, 1);
+        ideas[1] = new SimpleMoveIdea(gameObject, 1);
 
         /* Search enemy */
-        ideas[1] = new SearchEnemyIdea(gameObject, 10);
+        ideas[2] = new SearchEnemyIdea(gameObject, 10);
 
         /* Attack */
-        ideas[2] = new SimpleAttackIdea(gameObject, 5);
+        ideas[3] = new SimpleAttackIdea(gameObject, 5);
 
         // unlock brain
         unlock();

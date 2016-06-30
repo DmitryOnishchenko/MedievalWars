@@ -104,6 +104,28 @@ public class ImageUtils {
         return null;
     }
 
+    public static BufferedImage[] loadImageTiles(String path, int width, int height, double scale, int start, int end) {
+        try {
+            URL url = Application.class.getResource(path);
+            BufferedImage img = ImageIO.read(url);
+
+            int total = end - start;
+            BufferedImage[] array = new BufferedImage[total];
+
+            for (int i = start; i < total; i++) {
+                BufferedImage subImage = img.getSubimage(i * width, 0, width, height);
+                array[i] = resize(subImage, scale);
+            }
+
+            return array;
+        } catch (IOException ex) {
+            System.out.println("Load image error: " + path);
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
     /**
      * Convert BufferedImage to compatible image
      * @param source

@@ -14,6 +14,10 @@ public class GraphicsModel {
     @JsonProperty private int baseLine;
     @JsonProperty private int animationSpeed;
 
+    @JsonProperty private int[] standSpritesIndex;
+    @JsonProperty private BufferedImage[] standSpritesRight;
+    @JsonProperty private BufferedImage[] standSpritesLeft;
+
     @JsonProperty private int[] moveSpritesIndex;
     @JsonProperty private BufferedImage[] moveSpritesRight;
     @JsonProperty private BufferedImage[] moveSpritesLeft;
@@ -26,21 +30,27 @@ public class GraphicsModel {
     @JsonProperty private BufferedImage[] dieSpritesRight;
     @JsonProperty private BufferedImage[] dieSpritesLeft;
 
+    @JsonSetter("standSpritesFile")
+    public void setStandSprites(String file) {
+        standSpritesRight = ImageUtils.loadImageTiles(file, widthSprite, heightSprite, ResourceLoader.SCALE, standSpritesIndex[0], standSpritesIndex[1]);
+        standSpritesLeft = ImageUtils.flipHorizontally(standSpritesRight);
+    }
+
     @JsonSetter("moveSpritesFile")
     public void setMoveSprites(String file) {
-        moveSpritesRight = ImageUtils.loadImageTiles(file, widthSprite, heightSprite, ResourceLoader.SCALE);
+        moveSpritesRight = ImageUtils.loadImageTiles(file, widthSprite, heightSprite, ResourceLoader.SCALE, moveSpritesIndex[0], moveSpritesIndex[1]);
         moveSpritesLeft = ImageUtils.flipHorizontally(moveSpritesRight);
     }
 
     @JsonSetter("fightSpritesFile")
     public void setFightSprites(String file) {
-        fightSpritesRight = ImageUtils.loadImageTiles(file, widthSprite, heightSprite, ResourceLoader.SCALE);
+        fightSpritesRight = ImageUtils.loadImageTiles(file, widthSprite, heightSprite, ResourceLoader.SCALE, fightSpritesIndex[0], fightSpritesIndex[1]);
         fightSpritesLeft = ImageUtils.flipHorizontally(fightSpritesRight);
     }
 
     @JsonSetter("dieSpritesFile")
     public void setDieSprites(String file) {
-        dieSpritesRight = ImageUtils.loadImageTiles(file, widthSprite, heightSprite, ResourceLoader.SCALE);
+        dieSpritesRight = ImageUtils.loadImageTiles(file, widthSprite, heightSprite, ResourceLoader.SCALE, dieSpritesIndex[0], dieSpritesIndex[1]);
         dieSpritesLeft = ImageUtils.flipHorizontally(dieSpritesRight);
     }
 
@@ -74,6 +84,22 @@ public class GraphicsModel {
 
     public void setAnimationSpeed(int animationSpeed) {
         this.animationSpeed = animationSpeed;
+    }
+
+    public BufferedImage[] getStandSpritesRight() {
+        return standSpritesRight;
+    }
+
+    public void setStandSpritesRight(BufferedImage[] standSpritesRight) {
+        this.standSpritesRight = standSpritesRight;
+    }
+
+    public BufferedImage[] getStandSpritesLeft() {
+        return standSpritesLeft;
+    }
+
+    public void setStandSpritesLeft(BufferedImage[] standSpritesLeft) {
+        this.standSpritesLeft = standSpritesLeft;
     }
 
     public BufferedImage[] getMoveSpritesRight() {

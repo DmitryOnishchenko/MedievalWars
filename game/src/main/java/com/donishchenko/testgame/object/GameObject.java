@@ -2,6 +2,7 @@ package com.donishchenko.testgame.object;
 
 import com.donishchenko.testgame.config.EngineConstants;
 import com.donishchenko.testgame.gamestate.battle.Cell;
+import com.donishchenko.testgame.gamestate.battle.PathPoint;
 import com.donishchenko.testgame.object.action.Action;
 import com.donishchenko.testgame.object.action.DieAction;
 import com.donishchenko.testgame.object.ai.Brain;
@@ -36,6 +37,7 @@ public class GameObject implements Comparable<GameObject> {
     public Vector2F pos;
     public Vector2F dir;
     public volatile GameObject target;
+    public volatile PathPoint moveTarget;
 
     /* Box model */
     public Ellipse2D.Float hitBox = new Ellipse2D.Float();

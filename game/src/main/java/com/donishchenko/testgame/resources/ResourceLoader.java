@@ -21,12 +21,12 @@ public class ResourceLoader {
 
         // Human units
         loadResourcesForUnit("Human Soldier");
-        loadResourcesForUnit("Human Archer");
+//        loadResourcesForUnit("Human Archer");
 
         // Orc units
-        loadResourcesForUnit("Orc Soldier");
-        loadResourcesForUnit("Orc Archer");
-        loadResourcesForUnit("Orc Soldier Elite");
+//        loadResourcesForUnit("Orc Soldier");
+//        loadResourcesForUnit("Orc Archer");
+//        loadResourcesForUnit("Orc Soldier Elite");
     }
 
     public static Resources getResources(String key) {
